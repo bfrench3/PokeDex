@@ -1,1 +1,22 @@
-<p>home works!</p>
+<div>Welcome to PokeFinder! Here, you can do anything Pokemon!</div>
+
+
+<div *ngIf="randomPokemon; else loading"></div>
+<h1 id="title">Random Pokemon of the day!</h1>
+<h2></h2>
+<img [src]="randomPokemon.sprites.front_default" [alt]="randomPokemon.name" id="pokemonPic" />
+<ul id="randomPokemon">
+    <li><strong>Name: </strong>{{ randomPokemon.species.name | titlecase}}</li>
+    <li><strong>Pokedex No. </strong> {{randomPokemon.id}}</li>
+    <li><strong>Height:</strong> {{ randomPokemon.height }}</li>
+    <li><strong>Weight:</strong> {{ randomPokemon.weight }}</li>
+    <li><strong>Type: </strong> {{randomPokemon.types[0].type.name}}</li>
+    <li><strong>Ability: </strong>{{randomPokemon.abilities[0].ability.name}}</li>
+    <li><strong>Health: </strong>{{randomPokemon.stats[0].base_stat}}</li>
+    <li><strong>Attack: </strong>{{randomPokemon.stats[1].base_stat}}</li>
+    <li><strong>Defense: </strong>{{randomPokemon.stats[2].base_stat}}</li>
+    <li><strong>Speed: </strong>{{randomPokemon.stats[5].base_stat}}</li>
+</ul>
+<ng-template #loading>
+    <p>Loading a random Pokémon...</p>
+</ng-template>

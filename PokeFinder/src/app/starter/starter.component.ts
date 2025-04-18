@@ -7,6 +7,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './starter.component.html',
   styleUrls: ['./starter.component.css']
 })
-export class StarterComponent {
 
+
+export class StarterComponent {
+  constructor() {
+    console.log('StarterComponent initialized!');
+  }
+  onSelect(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    console.log(`You selected: ${selectedValue}`);
+  }
 }
