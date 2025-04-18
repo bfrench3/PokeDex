@@ -1,0 +1,14 @@
+.starter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    /* space between each card */
+    flex-wrap: wrap;
+    /* allows wrapping on small screens */
+    margin-top: 1rem;
+}
+
+.starter-card {
+    text-align: center;
+}

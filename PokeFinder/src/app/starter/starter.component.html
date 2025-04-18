@@ -3,7 +3,57 @@
 
 <label for="dropdownType">Choose your starter type!</label>
 <select id="dropdownType" name="options" (change)="onSelect($event)">
+    <option value=""></option>
     <option value="Grass">Grass</option>
     <option value="Fire">Fire</option>
     <option value="Water">Water</option>
 </select>
+
+<ng-template #loading>
+</ng-template>
+
+<div *ngIf="selectedType === 'Grass'" class="starter-container">
+    <div *ngIf="bulbasaur" class="starter-card">
+        <img [src]="bulbasaur.sprites.front_default" [alt]="bulbasaur.name" />
+        <p><strong>Name:</strong> {{ bulbasaur.name }}</p>
+    </div>
+    <div *ngIf="turtwig" class="starter-card">
+        <img [src]="turtwig.sprites.front_default" [alt]="turtwig.name" />
+        <p><strong>Name:</strong> {{ turtwig.name }}</p>
+    </div>
+    <div *ngIf="chikorita" class="starter-card">
+        <img [src]="chikorita.sprites.front_default" [alt]="chikorita.name" />
+        <p><strong>Name:</strong> {{ chikorita.name }}</p>
+    </div>
+</div>
+
+
+<div *ngIf="selectedType === 'Fire'" class="starter-container">
+    <div *ngIf="charmander" class="starter-card">
+        <img [src]="charmander.sprites.front_default" [alt]="charmander.name" />
+        <p><strong>Name:</strong> {{ charmander.name }}</p>
+    </div>
+    <div *ngIf="cyndaquil" class="starter-card">
+        <img [src]="cyndaquil.sprites.front_default" [alt]="cyndaquil.name" />
+        <p><strong>Name:</strong> {{ cyndaquil.name }}</p>
+    </div>
+    <div *ngIf="chimchar" class="starter-card">
+        <img [src]="chimchar.sprites.front_default" [alt]="chimchar.name" />
+        <p><strong>Name:</strong> {{ chimchar.name }}</p>
+    </div>
+</div>
+
+<div *ngIf="selectedType === 'Water'" class="starter-container">
+    <div *ngIf="squirtle" class="starter-card">
+        <img [src]="squirtle.sprites.front_default" [alt]="squirtle.name" />
+        <p><strong>Name:</strong> {{ squirtle.name }}</p>
+    </div>
+    <div *ngIf="piplup" class="starter-card">
+        <img [src]="piplup.sprites.front_default" [alt]="piplup.name" />
+        <p><strong>Name:</strong> {{ piplup.name }}</p>
+    </div>
+    <div *ngIf="totodile" class="starter-card">
+        <img [src]="totodile.sprites.front_default" [alt]="totodile.name" />
+        <p><strong>Name:</strong> {{ totodile.name }}</p>
+    </div>
+</div>
