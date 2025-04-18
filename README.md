@@ -17,3 +17,7 @@ app.routes.ts is where we make new routes for page nav
 app.component.ts is what gets loaded with index.html line 13
 
 making a new component creates a folder with html css and ts files. 
+
+COMPONENTS:
+- home
+- starter
