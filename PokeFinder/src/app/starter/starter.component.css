@@ -12,3 +12,48 @@
 .starter-card {
     text-align: center;
 }
+
+.starter-card:hover {
+    background-color: lightgray;
+}
+
+.pokemon-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.pokemon-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+    max-width: 90%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.pokemon-details img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,67 @@
+<h1>Gym Leaders</h1>
+<label for="Gens">Select a generation</label>
+<select id="Gens" name="Gens" (change)="onSelect($event)">
+    <option value=""></option>
+    <option value="1">Gen 1</option>
+    <option value="2">Gen 2</option>
+    <option value="3">Gen 3</option>
+    <option value="4">Gen 4</option>
+    <option value="5">Gen 5</option>
+</select>
+
+<div *ngIf="selectedGen === '1' && gymLeaders.length > 0">
+    <div *ngFor="let leader of gymLeaders" class="leader-card">
+        <h5>{{ leader.name | titlecase }} - {{ leader.type | titlecase }} Type</h5>
+        <p>Gym #{{ leader.gymNo }}</p>
+        <p>Party:</p>
+        <ul>
+            <li *ngFor="let pokemon of leader.party">{{ pokemon }}</li>
+        </ul>
+        <hr />
+    </div>
+</div>
+
+<div *ngIf="selectedGen === '2' && gymLeaders.length > 0">
+    <div *ngFor="let leader of gymLeaders" class="leader-card">
+        <h5>{{ leader.name | titlecase }} - {{ leader.type | titlecase }} Type</h5>
+        <p>Gym #{{ leader.gymNo }}</p>
+        <p>Party:</p>
+        <ul>
+            <li *ngFor="let pokemon of leader.party">{{ pokemon }}</li>
+        </ul>
+        <hr />
+    </div>
+</div>
+<div *ngIf="selectedGen === '3' && gymLeaders.length > 0">
+    <div *ngFor="let leader of gymLeaders" class="leader-card">
+        <h5>{{ leader.name | titlecase }} - {{ leader.type | titlecase }} Type</h5>
+        <p>Gym #{{ leader.gymNo }}</p>
+        <p>Party:</p>
+        <ul>
+            <li *ngFor="let pokemon of leader.party">{{ pokemon }}</li>
+        </ul>
+        <hr />
+    </div>
+</div>
+<div *ngIf="selectedGen === '4' && gymLeaders.length > 0">
+    <div *ngFor="let leader of gymLeaders" class="leader-card">
+        <h5>{{ leader.name | titlecase }} - {{ leader.type | titlecase }} Type</h5>
+        <p>Gym #{{ leader.gymNo }}</p>
+        <p>Party:</p>
+        <ul>
+            <li *ngFor="let pokemon of leader.party">{{ pokemon }}</li>
+        </ul>
+        <hr />
+    </div>
+</div>
+<div *ngIf="selectedGen === '5' && gymLeaders.length > 0">
+    <div *ngFor="let leader of gymLeaders" class="leader-card">
+        <h5>{{ leader.name | titlecase }} - {{ leader.type | titlecase }} Type</h5>
+        <p>Gym #{{ leader.gymNo }}</p>
+        <p>Party:</p>
+        <ul>
+            <li *ngFor="let pokemon of leader.party">{{ pokemon }}</li>
+        </ul>
+        <hr />
+    </div>
+</div>

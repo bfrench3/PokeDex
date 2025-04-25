@@ -11,49 +11,58 @@
 
 <ng-template #loading>
 </ng-template>
-
 <div *ngIf="selectedType === 'Grass'" class="starter-container">
-    <div *ngIf="bulbasaur" class="starter-card">
+    <div *ngIf="bulbasaur" class="starter-card" (click)="selectPokemon(bulbasaur)">
         <img [src]="bulbasaur.sprites.front_default" [alt]="bulbasaur.name" />
         <p><strong>Name:</strong> {{ bulbasaur.name }}</p>
     </div>
-    <div *ngIf="turtwig" class="starter-card">
+    <div *ngIf="turtwig" class="starter-card" (click)="selectPokemon(turtwig)">
         <img [src]="turtwig.sprites.front_default" [alt]="turtwig.name" />
         <p><strong>Name:</strong> {{ turtwig.name }}</p>
     </div>
-    <div *ngIf="chikorita" class="starter-card">
+    <div *ngIf="chikorita" class="starter-card" (click)="selectPokemon(chikorita)">
         <img [src]="chikorita.sprites.front_default" [alt]="chikorita.name" />
         <p><strong>Name:</strong> {{ chikorita.name }}</p>
     </div>
 </div>
 
-
 <div *ngIf="selectedType === 'Fire'" class="starter-container">
-    <div *ngIf="charmander" class="starter-card">
+    <div *ngIf="charmander" class="starter-card" (click)="selectPokemon(charmander)">
         <img [src]="charmander.sprites.front_default" [alt]="charmander.name" />
         <p><strong>Name:</strong> {{ charmander.name }}</p>
     </div>
-    <div *ngIf="cyndaquil" class="starter-card">
+    <div *ngIf="cyndaquil" class="starter-card" (click)="selectPokemon(cyndaquil)">
         <img [src]="cyndaquil.sprites.front_default" [alt]="cyndaquil.name" />
         <p><strong>Name:</strong> {{ cyndaquil.name }}</p>
     </div>
-    <div *ngIf="chimchar" class="starter-card">
+    <div *ngIf="chimchar" class="starter-card" (click)="selectPokemon(chimchar)">
         <img [src]="chimchar.sprites.front_default" [alt]="chimchar.name" />
         <p><strong>Name:</strong> {{ chimchar.name }}</p>
     </div>
 </div>
 
 <div *ngIf="selectedType === 'Water'" class="starter-container">
-    <div *ngIf="squirtle" class="starter-card">
+    <div *ngIf="squirtle" class="starter-card" (click)="selectPokemon(squirtle)">
         <img [src]="squirtle.sprites.front_default" [alt]="squirtle.name" />
         <p><strong>Name:</strong> {{ squirtle.name }}</p>
     </div>
-    <div *ngIf="piplup" class="starter-card">
+    <div *ngIf="piplup" class="starter-card" (click)="selectPokemon(piplup)">
         <img [src]="piplup.sprites.front_default" [alt]="piplup.name" />
         <p><strong>Name:</strong> {{ piplup.name }}</p>
     </div>
-    <div *ngIf="totodile" class="starter-card">
+    <div *ngIf="totodile" class="starter-card" (click)="selectPokemon(totodile)">
         <img [src]="totodile.sprites.front_default" [alt]="totodile.name" />
         <p><strong>Name:</strong> {{ totodile.name }}</p>
+    </div>
+</div>
+
+
+<div *ngIf="selectedPokemon" class="pokemon-modal">
+    <div class="pokemon-details">
+        <img [src]="selectedPokemon.sprites.front_default" [alt]="selectedPokemon.name" />
+        <h2>{{ selectedPokemon.name | titlecase }}</h2>
+        <p><strong>Height:</strong> {{ selectedPokemon.height }}</p>
+        <p><strong>Weight:</strong> {{ selectedPokemon.weight }}</p>
+        <button (click)="selectedPokemon = null">Close</button>
     </div>
 </div>

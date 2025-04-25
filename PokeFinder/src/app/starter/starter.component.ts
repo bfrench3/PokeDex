@@ -25,6 +25,11 @@ export class StarterComponent {
   totodile: any;
 
   selectedType: string = '';
+  selectedPokemon: any = null;
+
+  selectPokemon(pokemon: any) {
+    this.selectedPokemon = pokemon;
+  }
 
   constructor(private http: HttpClient) { }
 
