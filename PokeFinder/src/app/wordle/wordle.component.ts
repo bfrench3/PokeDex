@@ -37,7 +37,7 @@ export class WordleComponent {
 
   letters = 0
   guess: string[] = [] //current guess
-  finalGuess: string[] = [] //array of guesses 
+  finalGuess: { letter: string, color: string }[][] = [] //array of guesses 
   outcome = "";
   remainingGuesses = 5;
   guessStr = "" // concatenates the current guess
@@ -51,7 +51,7 @@ export class WordleComponent {
     if (key === 'ENTER' && this.remainingGuesses >= 1) { //submission key
       if (this.guess.length === 5) {
         let guessStr = this.guess.join(''); //joins 5 chars to a string
-        this.finalGuess.push(guessStr); //store it in the array of guesses
+        //this.finalGuess.push(guessStr); //store it in the array of guesses
         this.remainingGuesses--; //one less guess
         this.check(guessStr); //check if the guess was correct
         console.log(guessStr);
@@ -65,40 +65,40 @@ export class WordleComponent {
           this.outcome = `Incorrect! ${this.remainingGuesses} remaining.`;
         }
 
-        this.guess = [];
+        this.guess = []; //reset guess and letters counters
         this.letters = 0;
       }
-    } else if (/^[A-Z]$/.test(key) && this.guess.length < 5) {
+    } else if (/^[A-Z]$/.test(key) && this.guess.length < 5) { //add letters before submit
       this.guess.push(key);
       this.letters++;
-    } else if (key === 'BACKSPACE' && this.guess.length > 0) {
+    } else if (key === 'BACKSPACE' && this.guess.length > 0) { //undo letters if backspace
       this.guess.pop();
       this.letters--;
     }
   }
+
+
   check(guess: string) {
-    let hit: any
+    const coloredGuess: { letter: string, color: string }[] = []
+    let color: any;
     for (let i = 0; i < 5; i++) {
-      hit = false;
+      color = 'grey'; //default outcome
       if (guess[i] == this.word[i]) {
         console.log("green");
-        hit = true;
+        color = 'green'; //update if letter is a match
       }
       else {
         for (let j = 0; j < 5; j++) {
           if (i != j && guess[i] == this.word[j]) {
             console.log("yellow");
-            hit = true;
+            color = 'yellow'; //update if letter exists in word but not at current index
             break;
           }
         }
       }
-      if (!hit) {
-        console.log("grey");
-      }
+      coloredGuess.push({ letter: guess[i], color }); //store as colored guess
     }
-    this.guess = [];
-    this.letters = 0;
-    //this.finalGuess = ""
+    this.finalGuess.push(coloredGuess); //push to finalGuess
+
   }
 }

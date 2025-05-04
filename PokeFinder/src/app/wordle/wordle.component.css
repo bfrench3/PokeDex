@@ -1,0 +1,29 @@
+.guess-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.letter-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    border-radius: 4px;
+}
+
+.green {
+    background-color: #6aaa64;
+}
+
+.yellow {
+    background-color: #c9b458;
+}
+
+.grey {
+    background-color: #787c7e;
+}

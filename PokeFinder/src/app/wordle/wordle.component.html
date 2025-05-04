@@ -2,8 +2,13 @@
 <p>Type a 5 letter word and press enter to guess the poke word! You get 5 guesses!</p>
 <h3 *ngIf='guess.length > 0 && guess.length < 5'>{{ guess.join('') }}</h3>
 <div (window:keydown)="onKeyPress($event)">
-    <div *ngFor="let g of finalGuess">
-        <h3>{{ g }}</h3>
+    <div *ngFor="let guess of finalGuess">
+        <div class="guess-row">
+            <span *ngFor="let letter of guess" class="letter-box" [ngClass]="letter.color">
+                {{ letter.letter }}
+            </span>
+        </div>
     </div>
+
     <h3 *ngIf="outcome">{{ outcome }}</h3>
 </div>
