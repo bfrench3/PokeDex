@@ -1,0 +1,12 @@
+<div *ngIf="location">
+    <p> Latitude: {{ location.coords.latitude }}</p>
+    <p>Longitude: {{ location.coords.longitude}}</p>
+
+</div>
+<div *ngIf="error">
+    <p>Error: {{ error }}</p>
+</div>
+
+<iframe width="600" height="450" style="border:0;" [attr.src]="mapUrl" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
