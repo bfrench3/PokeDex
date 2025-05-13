@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="shouldShowNavBar()">
   <a routerLink="/" routerLinkActive="active-link">Home</a>
   <a routerLink="/starter" routerLinkActive="active-link">Find a starter!</a>
   <a routerLink="/trainers" routerLinkActive="active-link">View Gym Leaders</a>

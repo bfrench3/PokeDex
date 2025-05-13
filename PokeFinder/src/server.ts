@@ -7,12 +7,58 @@ import {
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import mysql from 'mysql2/promise';
+import cors from 'cors';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 3;
+
 const app = express();
+app.use(cors());
+app.use(express.json());
 const angularApp = new AngularNodeAppEngine();
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'Ripfly2000!',
+  database: 'usersPoke',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const query = "SELECT * FROM users WHERE USERNAME = ? AND PASSWORD = ?";
+    const [result] = await pool.execute(query, [username, hashedPassword]);
+    res.json(result);
+  } catch (error: any) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.post('/signup', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    res.status(400).json({ error: "invalid input" });
+  }
+  try {
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const query = "INSERT INTO users (username, password) VALUES (?, ?)";
+    const [result] = await pool.execute(query, [username, hashedPassword]);
+    res.json(result);
+  } catch (error: any) {
+    console.log(error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -59,6 +105,8 @@ if (isMainModule(import.meta.url)) {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
+
+
 
 /**
  * The request handler used by the Angular CLI (dev-server and during build).

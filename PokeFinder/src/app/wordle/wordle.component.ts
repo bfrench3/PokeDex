@@ -57,7 +57,7 @@ export class WordleComponent {
         console.log(guessStr);
 
         if (this.remainingGuesses < 1) {
-          this.outcome = "Out of guesses, refresh to try again!"; //logging for if there are no more guesses 
+          this.outcome = `Out of guesses, the correct word was ${this.word}`; //logging for if there are no more guesses 
         }
         else if (guessStr === this.word) {
           this.outcome = "You guessed correctly!";
