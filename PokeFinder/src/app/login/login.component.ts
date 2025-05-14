@@ -17,7 +17,7 @@ export class LoginComponent {
 
 
   constructor(private router: Router, private http: HttpClient) {
-
+    localStorage.clear();
   }
   goToSignup(): void {
     this.router.navigate(['/signup']);
@@ -29,9 +29,17 @@ export class LoginComponent {
       password: this.password
     };
     this.http.post('/login', loginData).subscribe(
-      (response) => {
-        console.log('Login successful: ', response);
-        this.router.navigate(['/home']);
+      (response: any) => {
+        if (response) {
+          const user = response[0]
+          console.log('Login successful: ', response);
+          localStorage.setItem('user', JSON.stringify(user.username));
+          console.log("stored user");
+          this.router.navigate(['/home']);
+        }
+        else {
+          alert('invalid credentials!');
+        }
       }, (error) => {
         console.error('login failed: ', error);
         alert('invalid login attempt');

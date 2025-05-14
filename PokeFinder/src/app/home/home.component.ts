@@ -13,11 +13,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   randomPokemon: any;
+  user: any
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getRandomPokemon();
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log("user: ", this.user);
   }
 
   getRandomPokemon() {

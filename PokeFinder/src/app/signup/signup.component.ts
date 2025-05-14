@@ -19,15 +19,22 @@ export class SignupComponent {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  onSignup() {
+  onSignup(): void {
     const loginData = {
       username: this.username,
       password: this.password
     };
     this.http.post('/signup', loginData).subscribe(
-      (response) => {
-        console.log('login successful: ', response);
-        this.router.navigate(['/home']);
+      (response: any) => {
+        if (response) {
+          const user = { username: this.username };
+          console.log('login successful: ', response);
+          localStorage.setItem('user', JSON.stringify(user.username));
+          this.router.navigate(['/home']);
+        } else {
+          alert('invalid credentials');
+        }
+
       }, (error) => {
         console.log('login failed', error);
         alert('invalid username or password');

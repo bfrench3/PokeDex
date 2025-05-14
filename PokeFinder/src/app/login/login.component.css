@@ -1,0 +1,56 @@
+#head {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#log {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+#log label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+#log input[type="text"],
+#log input[type="password"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#log button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#log button:hover {
+    background-color: #0056b3;
+}
+
+#signup {
+    background-color: #6c757d;
+}
+
+#signup:hover {
+    background-color: #5a6268;
+}

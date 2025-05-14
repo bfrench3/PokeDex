@@ -34,10 +34,15 @@ const pool = mysql.createPool({
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const query = "SELECT * FROM users WHERE USERNAME = ? AND PASSWORD = ?";
-    const [result] = await pool.execute(query, [username, hashedPassword]);
-    res.json(result);
+    const [result] = await pool.execute(query, [username, password]);
+    console.log("api: ", [result]);
+    if ([result].length > 0) {
+      res.json(result);
+    } else {
+      res.status(500).json({ error: "error" });
+    }
   } catch (error: any) {
     console.log(error);
     res.status(500).json({ error: error.message });
@@ -50,12 +55,12 @@ app.post('/signup', async (req, res) => {
     res.status(400).json({ error: "invalid input" });
   }
   try {
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
     const query = "INSERT INTO users (username, password) VALUES (?, ?)";
-    const [result] = await pool.execute(query, [username, hashedPassword]);
+    const [result] = await pool.execute(query, [username, password]);
     res.json(result);
+
   } catch (error: any) {
-    console.log(error.message);
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 });
