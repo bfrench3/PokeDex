@@ -21,3 +21,14 @@ making a new component creates a folder with html css and ts files.
 COMPONENTS:
 - home
 - starter
+- whereami (practice for location services)
+- login/signup
+- starters (practice hitting open APIs)
+- wordle (recreated wordle with pokemon theme)
+- gym leaders (ngIf practice, parsing more api data)
+
+cool stuff
+- authguarding
+- accessing user location services
+- intertwining independent components
+- server.ts quirks about angular/data transfer
