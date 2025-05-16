@@ -7,14 +7,16 @@ import { WhereamiComponent } from './whereami/whereami.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from '../auth.guard';
+import { NotesComponent } from './notes/notes.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'starter', component: StarterComponent, canActivate: [AuthGuard] },
     { path: 'trainers', component: TrainersComponent, canActivate: [AuthGuard] },
     { path: 'wordle', component: WordleComponent, canActivate: [AuthGuard] },
     { path: 'whereami', component: WhereamiComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent, },
-    { path: 'signup', component: SignupComponent, }
+    { path: 'signup', component: SignupComponent, },
+    { path: 'notes', component: NotesComponent, canActivate: [AuthGuard] }
 ];
