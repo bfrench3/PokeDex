@@ -1,1 +1,14 @@
-<p>notes works!</p>
+<h1>Notebook</h1>
+<form (ngSubmit)="onPress()">
+    <label for="title" id="title">Title</label>
+    <input type="text" name="title" [(ngModel)]="title"><br><br>
+    <label for="note" id="note">Note</label>
+    <textarea rows="5" cols="50" id="note" name="note" [(ngModel)]="note"></textarea>
+    <button type="submit">Save note</button>
+</form>
+
+<button id="show" (click)="showNotes()">Show my notes</button>
+<div *ngFor="let note of notes">
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.note }}</p>
+</div>

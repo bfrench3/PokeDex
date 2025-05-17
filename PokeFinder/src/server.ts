@@ -49,6 +49,19 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.post('/note', async (req, res) => {
+  const { title, note } = req.body;
+  try {
+    console.log("req: ", title, note);
+    const query = "INSERT INTO notes (title, note) VALUES (?, ?)";
+    const [result] = await [pool.execute(query, [title, note])];
+    console.log([result]);
+    res.json(result);
+  } catch (error: any) {
+    console.error(error);
+  }
+});
+
 app.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -64,6 +77,19 @@ app.post('/signup', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+app.post('/showNote', async (req, res) => {
+  const { user } = req.body;
+  console.log("user from front end", user);
+  try {
+    const query = "SELECT * FROM notes WHERE user = ?";
+    const [result] = await pool.execute(query, [user]);
+    res.json(result);
+  } catch (error: any) {
+    console.error(error);
+  }
+}
+);
 
 /**
  * Example Express Rest API endpoints can be defined here.

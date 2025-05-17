@@ -10,7 +10,7 @@ import { AuthGuard } from '../auth.guard';
 import { NotesComponent } from './notes/notes.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'starter', component: StarterComponent, canActivate: [AuthGuard] },
     { path: 'trainers', component: TrainersComponent, canActivate: [AuthGuard] },
