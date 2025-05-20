@@ -29,9 +29,16 @@ export class StarterComponent {
 
   selectPokemon(pokemon: any) {
     this.selectedPokemon = pokemon;
+
   }
 
   constructor(private http: HttpClient) { }
+
+
+  submitStarter(starter: string) {
+    localStorage.setItem('starter', starter);
+  }
+
 
   onSelect(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;

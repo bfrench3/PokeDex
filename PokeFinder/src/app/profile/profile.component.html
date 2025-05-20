@@ -1,0 +1,5 @@
+<h1>Username: {{ user }}</h1>
+<h1>Profile picture:</h1>
+<img [src]="profileString" width="100" height="100" (click)="triggerFileInput()" id="pic">
+<input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" style="display: none" />
+<h2 id="starter">Starter: {{ starter }}</h2>

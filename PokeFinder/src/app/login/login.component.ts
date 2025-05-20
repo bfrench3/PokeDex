@@ -33,7 +33,7 @@ export class LoginComponent {
         if (response) {
           const user = response[0]
           console.log('Login successful: ', response);
-          localStorage.setItem('user', JSON.stringify(user.username));
+          localStorage.setItem('user', user.username);
           console.log("stored user");
           this.router.navigate(['/home']);
         }

@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from '../auth.guard';
 import { NotesComponent } from './notes/notes.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,5 +19,6 @@ export const routes: Routes = [
     { path: 'whereami', component: WhereamiComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent, },
     { path: 'signup', component: SignupComponent, },
-    { path: 'notes', component: NotesComponent, canActivate: [AuthGuard] }
+    { path: 'notes', component: NotesComponent, canActivate: [AuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
 ];

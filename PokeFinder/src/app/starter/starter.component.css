@@ -13,9 +13,7 @@
     text-align: center;
 }
 
-.starter-card:hover {
-    background-color: lightgray;
-}
+
 
 .pokemon-modal {
     position: fixed;
@@ -56,4 +54,8 @@
     width: 150px;
     height: auto;
     margin-bottom: 1rem;
+}
+
+#pick:hover {
+    background-color: lightgrey;
 }

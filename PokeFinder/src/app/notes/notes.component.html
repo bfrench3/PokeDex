@@ -9,6 +9,6 @@
 
 <button id="show" (click)="showNotes()">Show my notes</button>
 <div *ngFor="let note of notes">
-    <h3>{{ note.title }}</h3>
-    <p>{{ note.note }}</p>
+    <h3 id="noteTitle">{{ note.title }}</h3>
+    <p id="noteBody">{{ note.note }}</p>
 </div>

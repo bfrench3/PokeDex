@@ -50,11 +50,11 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/note', async (req, res) => {
-  const { title, note } = req.body;
+  const { title, note, user } = req.body;
   try {
     console.log("req: ", title, note);
-    const query = "INSERT INTO notes (title, note) VALUES (?, ?)";
-    const [result] = await [pool.execute(query, [title, note])];
+    const query = "INSERT INTO notes (title, note, user) VALUES (?, ?, ?)";
+    const [result] = await [pool.execute(query, [title, note, user])];
     console.log([result]);
     res.json(result);
   } catch (error: any) {
